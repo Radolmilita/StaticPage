@@ -14,24 +14,27 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/main-style.css">
+    <link rel="stylesheet" type="text/css" href="css/low-weight-products.css">
     <title>Static HTML page</title>
-    <style>
-        table{
-            background-color: lightgray;
-        }
-        thead{
-            background-color: grey;
-        }
-        td{
-            border: solid 1px black;
-        }
-    </style>
 </head>
 <body>
 <header>
-    <h1>Блюдо <span style = "color: purple"><?php echo $data['dish']['dishName'];?></span></h1>
-    <h3>Тип <span style="color: purple"><?php echo $data['dish']['dishType'];?></span></h3>
-    <h3>Вес порции <span style="color: purple"><?php echo $data['dish']['weight'];?></span></h3>
+    <h1>Блюдо
+        <span class="dish-name">
+            <?php echo $data['dish']['dishName'];?>
+        </span>
+    </h1>
+    <h3>Тип
+        <span class="dish-type">
+            <?php echo $data['dish']['dishType'];?>
+        </span>
+    </h3>
+    <h3>Вес порции
+        <span class="dish-weight">
+            <?php echo $data['dish']['weight'];?>
+        </span>
+    </h3>
 </header>
 <section>
     <table>
@@ -43,13 +46,22 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($data['components']as $key=>$component): ?>
-            <tr>
-                <td><?php echo($key+1);?></td>
-                <td><?php echo $component['componentName'];?></td>
-                <td><?php echo $component['componentWeight'];?></td>
-            </tr>
-        <?php endforeach;?>
+        <?php
+            foreach ($data['dishes']as $key=>$component){
+                $row_class = 'row';
+                if($component['componentWeight']>100){
+                    $row_class = 'high-weight';
+                }
+                if($component['componentWeight']<100){
+                    $row_class = 'low-weight';
+                }
+                echo "<tr class = '$row_class'>
+                    <td>".($key+1)."</td>
+                    <td>".$component['componentName']."</td> 
+                    <td>".$component['componentWeight']."</td>
+                </tr>";
+            }
+        ?>
         </tbody>
     </table>
 </section>

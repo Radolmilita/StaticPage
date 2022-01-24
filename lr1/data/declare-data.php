@@ -1,29 +1,24 @@
 <?php
-$data = [
-    'dish'=>[
-        'dishName' => 'Апельсиновые спагетти',
-        'dishType' => 'Молекулярное',
-        'weight'=>'100г'
+$data = [];
+$f = fopen("data/dish.txt", "r");
+$dishString = fgets($f);
+$dishArray = explode(";", $dishString);
+fclose($f);
 
-    ],
-    'components'=>[
-        [
-            'componentName'=>  'Апельсиновый сок',
-            'componentWeight'=> '400 мл'
-        ],
-        [
-            'componentName'=>  'Густой апельсиновый сироп',
-            'componentWeight'=> '25 мл'
-        ],
-        [
-            'componentName'=>  'Сахарный сироп',
-            'componentWeight'=> '75 мл'
-        ],
-        [
-            'componentName'=>  'Желирующее вещество',
-            'componentWeight'=> '25 г'
-        ],
-    ]
+
+$data ['dish'] = [
+        'dishName'=>$dishArray[0],
+        'dishType'=>$dishArray[1],
+        'weight'=>$dishArray[2],
 ];
-
-?>
+$f = fopen("data/dishComponents.txt","r");
+while (!feof($f)){
+    $rowString = fgets($f);
+    $rowArray = explode(";",$rowString);
+    $DishComponents = [
+        "componentName"=>$rowArray[0],
+        "componentWeight"=>$rowArray[1],
+    ];
+    $data['dishes'][]= $DishComponents;
+}
+fclose($f);

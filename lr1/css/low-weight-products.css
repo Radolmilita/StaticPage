@@ -1,0 +1,9 @@
+tr.high-weight{
+    background: rgba(255, 0, 0, 0.5);
+}
+tr.low-weight{
+    background: rgba(173, 255, 47, 0.5);
+}
+tr.high-weight, tr.low-weight{
+    text-align: center;
+}
