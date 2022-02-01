@@ -4,7 +4,7 @@
 <!--All rights reserved and belong to their owners-->
 
 <?php
-    require "data/declare-data.php"
+    require_once "data/declare-data.php";
 ?>
 
 <!doctype html>
@@ -35,6 +35,7 @@
             <?php echo $data['dish']['weight'];?>
         </span>
     </h3>
+    <a href="forms/edit-dish.php">Редактировать блюдо</a>
 </header>
 <section>
     <table>
@@ -47,7 +48,7 @@
         </thead>
         <tbody>
         <?php
-            foreach ($data['dishes']as $key=>$component){
+            foreach ($data['dishComponents']as $key=>$component){
                 $row_class = 'row';
                 if($component['componentWeight']>100){
                     $row_class = 'high-weight';
