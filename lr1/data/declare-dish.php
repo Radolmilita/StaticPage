@@ -1,5 +1,5 @@
 <?php
-$f = fopen(__DIR__ . "../dish.txt", "r");
+$f = fopen(__DIR__ . "/Dish/dish.txt", "r");
 $dishString = fgets($f);
 $dishArray = explode(";", $dishString);
 fclose($f);

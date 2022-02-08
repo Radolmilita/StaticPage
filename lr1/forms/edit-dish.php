@@ -1,6 +1,6 @@
 <?php
     if($_POST){
-        $f = fopen("../data/dish.txt","w");
+        $f = fopen("../data/Dish/dish.txt","w");
         $dishArray = [
                 $_POST['dishName'],
                 $_POST['dishType'],

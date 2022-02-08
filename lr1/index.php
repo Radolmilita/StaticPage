@@ -44,11 +44,12 @@
             <th>№ Ингридиента </th>
             <th>Позиция</th>
             <th>Вес на порцию</th>
+            <th>Дата упаковки</th>
         </tr>
         </thead>
         <tbody>
         <?php
-            foreach ($data['dishComponents']as $key=>$component){
+            foreach ($data['dishComponents'] as $key=>$component){
                 $row_class = 'row';
                 if($component['componentWeight']>100){
                     $row_class = 'high-weight';
@@ -56,10 +57,15 @@
                 if($component['componentWeight']<100){
                     $row_class = 'low-weight';
                 }
+                $packDate = new DateTime($component['pack']);
                 echo "<tr class = '$row_class'>
                     <td>".($key+1)."</td>
                     <td>".$component['componentName']."</td> 
                     <td>".$component['componentWeight']."</td>
+                    <td>".date_format($packDate,'Y-m-d')."</td>
+                    <td>
+                        <a href='forms/edit-component.php?file=".$component['file']."'> Редактировать</a>
+                    </td>
                 </tr>";
             }
         ?>

@@ -1,0 +1,39 @@
+form{
+    display: table;
+    padding-top: 20px;
+}
+form div{
+    display: table-row;
+    line-height: 40px;
+    font-size: 14pt;
+}
+form div label, form div input{
+    display: table-cell;
+    font-size: 14pt;
+}
+form div label{
+    padding-right: 50px;
+}
+form div input{
+    border-radius: 5px;
+}
+input[name = 'component_name']{
+    width: 300px;
+}
+input[name = 'component_weight']{
+    width: 300px;
+}
+input[name = 'component_pack']{
+    width: 300px;
+}
+input[name = 'component_sweet']{
+    width: 300px;
+}
+a{
+    font-size: 14pt;
+    color: blue;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+}
